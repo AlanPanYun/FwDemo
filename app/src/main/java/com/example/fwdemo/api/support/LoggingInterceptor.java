@@ -15,6 +15,8 @@
  */
 package com.example.fwdemo.api.support;
 
+import android.util.Log;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.concurrent.TimeUnit;
@@ -28,7 +30,6 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
-import okhttp3.internal.http.HttpEngine;
 import okio.Buffer;
 import okio.BufferedSource;
 
@@ -109,6 +110,7 @@ public final class LoggingInterceptor implements Interceptor {
             @Override
             public void log(String message) {
                 //Platform.get().log(4, message, null);
+                Log.i("http",message);
             }
         };
     }
@@ -156,9 +158,9 @@ public final class LoggingInterceptor implements Interceptor {
         Connection connection = chain.connection();
         Protocol protocol = connection != null ? connection.protocol() : Protocol.HTTP_1_1;
         String requestStartMessage =
-                "--> " + request.method() + ' ' + request.url() + ' ' + protocol(protocol);
+                "--> " + request.method() + ' ' + request.url();
         if (!logHeaders && hasRequestBody) {
-            requestStartMessage += " (" + requestBody.contentLength() + "-byte body)";
+//            requestStartMessage += " (" + requestBody.contentLength() + "-byte body)";
         }
         logger.log(requestStartMessage);
 
@@ -167,10 +169,10 @@ public final class LoggingInterceptor implements Interceptor {
                 // Request body headers are only present when installed as a network interceptor. Force
                 // them to be included (when available) so there values are known.
                 if (requestBody.contentType() != null) {
-                    logger.log("Content-Type: " + requestBody.contentType());
+//                    logger.log("Content-Type: " + requestBody.contentType());
                 }
                 if (requestBody.contentLength() != -1) {
-                    logger.log("Content-Length: " + requestBody.contentLength());
+//                    logger.log("Content-Length: " + requestBody.contentLength());
                 }
             }
 
@@ -227,10 +229,11 @@ public final class LoggingInterceptor implements Interceptor {
         if (logHeaders) {
             Headers headers = response.headers();
             for (int i = 0, count = headers.size(); i < count; i++) {
-                logger.log(headers.name(i) + ": " + headers.value(i));
+//                logger.log(headers.name(i) + ": " + headers.value(i));
             }
 
-            if (!logBody || !HttpEngine.hasBody(response)) {
+//            if (!logBody || !HttpEngine.hasBody(response)) {
+            if (!logBody ) {
                 logger.log("<-- END HTTP");
             } else if (bodyEncoded(response.headers())) {
                 logger.log("<-- END HTTP (encoded body omitted)");

@@ -24,10 +24,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         setContentView(getLayoutId());
         setupActivityComponent(MyApplication.getInstance().getBaseComponent());
 
-
         configView();
         initData();
-
 
     }
 

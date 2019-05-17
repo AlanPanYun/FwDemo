@@ -3,7 +3,6 @@ package com.example.fwdemo.activity;
 import android.annotation.SuppressLint;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.provider.SyncStateContract;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -27,7 +26,6 @@ public class SecondActivity extends AppCompatActivity {
 
     private TextView tv;
     private AudioRecoderUtils mAudioRecoderUtils;
-
     private String recodPath = "";
 
 
@@ -39,23 +37,21 @@ public class SecondActivity extends AppCompatActivity {
 
         initData();
 
-
     }
 
     private void initPlay() {
-        if (TextUtils.isEmpty(recodPath)){
-            Toast.makeText(this,"路径为空",Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(recodPath)) {
+            Toast.makeText(this, "路径为空", Toast.LENGTH_LONG).show();
             return;
         }
         Button btnPlay = (Button) findViewById(R.id.btn_play);
-        final MediaPlayer mediaPlayer  = new MediaPlayer();
+        final MediaPlayer mediaPlayer = new MediaPlayer();
         try {
             mediaPlayer.setDataSource(recodPath);
             mediaPlayer.prepareAsync();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
 
         btnPlay.setOnClickListener(new View.OnClickListener() {

@@ -6,5 +6,5 @@ package com.example.fwdemo.base;
 
 public class Constat {
 
-    public static final String API_BASE_URL = "http://api.zhuishushenqi.com";
+    public static final String API_BASE_URL = "http://139.219.193.104:20353";
 }

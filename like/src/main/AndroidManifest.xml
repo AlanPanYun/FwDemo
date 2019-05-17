@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.face.like" >
+
+
+    <application>
+        <activity android:name="com.face.like.TestActivity"/>
+
+        <activity android:name="com.face.like.AvatarViewActivity"/>
+    </application>
+</manifest>
+

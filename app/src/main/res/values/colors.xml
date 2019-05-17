@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#3F51B5</color>
+    <color name="material_red300">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
+    <color name="material_red500">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="material_redA200">#FF4081</color>
 </resources>

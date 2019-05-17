@@ -2,8 +2,9 @@ package com.example.fwdemo.base;
 
 import com.example.fwdemo.contract.BaseContract;
 
-import rx.Subscription;
-import rx.subscriptions.CompositeSubscription;
+import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+
 
 /**
  * Created by Administrator on 2018/4/8.
@@ -13,7 +14,7 @@ public class RxPresenter<T extends BaseContract.BaseView>
         implements BaseContract.BasePresenter<T> {
 
     protected T mView;
-    protected CompositeSubscription mCompositeSubscription;
+    protected CompositeDisposable mCompositeSubscription;
 
     @Override
     public void attachView(T view) {
@@ -21,16 +22,16 @@ public class RxPresenter<T extends BaseContract.BaseView>
        this.mView = view;
     }
 
-    protected void addSubscrebe(Subscription subscription){
+    protected void addSubscrebe(Disposable disposable){
         if (mCompositeSubscription == null){
-            mCompositeSubscription = new CompositeSubscription();
-            mCompositeSubscription.add(subscription);
+            mCompositeSubscription = new CompositeDisposable();
+            mCompositeSubscription.add(disposable);
         }
     }
 
     private void unSubscribe(){
         if (mCompositeSubscription !=null){
-            mCompositeSubscription.unsubscribe();
+            mCompositeSubscription.clear();
         }
     }
     @Override
