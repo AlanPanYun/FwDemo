@@ -18,7 +18,7 @@ import android.util.AttributeSet;
 import android.util.Log;
 
 import com.example.fwdemo.R;
-import com.example.fwdemo.customview.BaseCusView;
+import com.face.library.base.BaseCusView;
 
 /**
  * @author Alan

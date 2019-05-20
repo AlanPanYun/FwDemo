@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fwdemo.R;
-import com.example.fwdemo.utils.TakePhotoUtils;
+import com.face.library.utils.TakePhotoUtils;
 
 /**
  * @author Alan

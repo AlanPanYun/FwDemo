@@ -16,8 +16,8 @@
 package com.example.fwdemo.api.support;
 
 
-import com.example.fwdemo.utils.AppUtils;
-import com.example.fwdemo.utils.DeviceUtils;
+import com.face.library.utils.AppUtils;
+import com.face.library.utils.DeviceUtils;
 
 import java.io.IOException;
 

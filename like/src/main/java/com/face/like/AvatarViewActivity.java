@@ -1,5 +1,6 @@
 package com.face.like;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,5 +22,9 @@ public class AvatarViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ARouter.getInstance().inject(this);
         setContentView(R.layout.activty_view_avatar);
+
+        CircleAnimator  cirlceView =  findViewById(R.id.cirlceView);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(cirlceView, "progress", 0, 70);
+        animator.start();
     }
 }

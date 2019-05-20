@@ -9,7 +9,7 @@ import com.example.fwdemo.bean.BaseDataBean;
 import com.example.fwdemo.bean.GetVersionResponse;
 import com.example.fwdemo.bean.request.GetVersionRequest;
 import com.example.fwdemo.contract.MainContract;
-import com.example.fwdemo.utils.GsonUtil;
+import com.face.library.utils.GsonUtil;
 
 import java.util.Random;
 

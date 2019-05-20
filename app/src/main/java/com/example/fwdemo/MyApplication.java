@@ -8,7 +8,7 @@ import com.example.fwdemo.component.DaggerAppComponent;
 import com.example.fwdemo.module.ApiModule;
 import com.example.fwdemo.module.BaseModule;
 import com.example.fwdemo.module.MainModule;
-import com.example.fwdemo.utils.AppUtils;
+import com.face.library.utils.AppUtils;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 

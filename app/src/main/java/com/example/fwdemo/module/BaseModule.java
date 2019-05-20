@@ -1,6 +1,6 @@
 package com.example.fwdemo.module;
 
-import com.example.fwdemo.utils.ClothHandler;
+import com.example.fwdemo.ClothHandler;
 
 import javax.inject.Singleton;
 

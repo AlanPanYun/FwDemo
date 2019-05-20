@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.fwdemo.utils;
+package com.face.library.utils;
 
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.DisplayMetrics;
 
 public class AppUtils {
 
@@ -63,5 +64,10 @@ public class AppUtils {
         } else {
             sHandler.removeCallbacks(r);
         }
+    }
+
+    public static float dpToPixel(float dp) {
+        DisplayMetrics metrics = Resources.getSystem().getDisplayMetrics();
+        return dp * metrics.density;
     }
 }

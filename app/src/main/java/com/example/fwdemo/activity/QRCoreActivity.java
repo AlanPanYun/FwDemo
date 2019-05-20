@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.fwdemo.R;
-import com.example.fwdemo.utils.QRCore;
+import com.face.library.utils.QRCore;
 
 public class QRCoreActivity extends AppCompatActivity {
 
