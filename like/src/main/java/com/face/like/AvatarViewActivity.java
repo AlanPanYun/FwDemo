@@ -3,6 +3,7 @@ package com.face.like;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -25,6 +26,8 @@ public class AvatarViewActivity extends AppCompatActivity {
 
         CircleAnimator  cirlceView =  findViewById(R.id.cirlceView);
         ObjectAnimator animator = ObjectAnimator.ofFloat(cirlceView, "progress", 0, 70);
+        animator.setDuration(1000);
+        animator.setInterpolator(new FastOutSlowInInterpolator());
         animator.start();
     }
 }

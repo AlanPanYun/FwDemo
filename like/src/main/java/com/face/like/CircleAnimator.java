@@ -17,10 +17,10 @@ import com.face.library.utils.AppUtils;
  */
 public class CircleAnimator extends BaseCusView {
 
-    final float radius = AppUtils.dpToPixel(80);
+    float radius = AppUtils.dpToPixel(80);
 
-    float progress = 0;
     RectF rectF = new RectF();
+    float progress ;
 
 
     public CircleAnimator(Context context) {
@@ -35,10 +35,11 @@ public class CircleAnimator extends BaseCusView {
         super(context, attrs, defStyleAttr);
     }
 
+
     {
-        paint.setTextSize(AppUtils.dpToPixel(40));
-        paint.setTextAlign(Paint.Align.CENTER);
+        paint.setColor(Color.GRAY);
     }
+
 
     public float getProgress() {
         return progress;
@@ -49,19 +50,26 @@ public class CircleAnimator extends BaseCusView {
         invalidate();
     }
 
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        float centerx = getWidth()/2;
-        float centery = getHeight()/2;
+        int cx = getWidth()/2;
+        int cy = getHeight()/2;
 
-        paint.setColor(Color.parseColor("#Ef1E63"));
+        paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(AppUtils.dpToPixel(20));
         paint.setStrokeCap(Paint.Cap.ROUND);
-        paint.setStrokeWidth(AppUtils.dpToPixel(15));
-        rectF.set(centerx-radius,centery-radius,centerx+radius,centery+radius);
+
+        rectF.set(cx-radius,cy-radius,cx+radius,cy+radius);
         canvas.drawArc(rectF,135,progress*2.7f,false,paint);
 
+        paint.setColor(Color.BLACK);
+        paint.setStyle(Paint.Style.FILL);
+        paint.setTextSize(AppUtils.dpToPixel(20));
+        paint.setTextAlign(Paint.Align.CENTER);
+        canvas.drawText((int)progress+"%",cx,cy-(paint.ascent()+paint.descent())/2,paint);
     }
 }
