@@ -130,20 +130,20 @@ public class MainPresenter extends RxPresenter<MainContract.View>
 
 
     public int[] proArry() {
-        Log.i("suanfa","proArry==" + System.currentTimeMillis());
+        Log.i("suanfa", "proArry==" + System.currentTimeMillis());
         Random random = new Random();
         int[] items = new int[10000];
         for (int i = 0; i < 9999; i++) {
             int ra = (int) Math.floor(random.nextDouble() * 1000);
             items[i] = ra;
         }
-        Log.i("suanfa","proArry==" + System.currentTimeMillis());
+        Log.i("suanfa", "proArry==" + System.currentTimeMillis());
         return items;
     }
 
 
     public void sortByMao(int[] item) {
-        Log.i("suanfa","sortByMao==" + System.currentTimeMillis());
+        Log.i("suanfa", "sortByMao==" + System.currentTimeMillis());
         int size = item.length;
         for (int i = 0; i < size; i++) {
             boolean flag = false;
@@ -161,11 +161,11 @@ public class MainPresenter extends RxPresenter<MainContract.View>
                 break;
             }
         }
-       Log.i("suanfa","sortByMao==" + System.currentTimeMillis());
+        Log.i("suanfa", "sortByMao==" + System.currentTimeMillis());
     }
 
     public void sortByCha(int[] a) {
-        Log.i("suanfa","sortByCha==" + System.currentTimeMillis());
+        Log.i("suanfa", "sortByCha==" + System.currentTimeMillis());
         int size = a.length;
         for (int i = 1; i < size; i++) {
             int value = a[i];
@@ -180,6 +180,95 @@ public class MainPresenter extends RxPresenter<MainContract.View>
             }
             a[j + 1] = value;
         }
-        Log.i("suanfa","sortByCha==" + System.currentTimeMillis());
+        Log.i("suanfa", "sortByCha==" + System.currentTimeMillis());
     }
+
+
+    private void sortMao(int[] a) {
+        int size = a.length;
+        boolean ch = false;
+
+        for (int i = 0; i < size; i++) {
+            ch = false;
+            for (int j = 0; j < size - i - 1; j++) {
+                if (a[j + 1] < a[j]) {
+                    int temp = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = temp;
+                    ch = true;
+                }
+            }
+            if (!ch) {
+                return;
+            }
+        }
+    }
+
+
+    private void sortCha(int[] a) {
+
+        int size = a.length;
+        for (int i = 1; i < size; i++) {
+            int j = i - 1;
+            int temp = a[i];
+
+            for (; j >= 0; j--) {
+
+                if (a[j] > temp) {
+                    a[j + 1] = a[j];
+                } else {
+                    return;
+                }
+            }
+            a[j + 1] = temp;
+
+        }
+    }
+
+    public int bsearch(int[] a, int n, int value) {
+        int low = 0;
+        int hight = n - 1;
+        //第一个值
+        while (low <= hight) {
+            int mid = low + (hight - low) >> 1;
+            if (a[mid] > value) {
+                hight = mid - 1;
+            } else if (a[mid] < value) {
+                low = mid + 1;
+            } else {
+                if (mid == 0 || a[mid - 1] != value) {
+                    return mid;
+                } else {
+                    hight = mid - 1;
+                }
+            }
+
+        }
+        return -1;
+    }
+
+    public int bsearchLast(int[] a, int n, int value) {
+
+        // 最后一个指定值
+        int l = 0;
+        int h = n - 1;
+        while (l <= h) {
+            int m = l +(h-l)/2;
+            if (a[m] > value){
+                h = m-1;
+            }else if (a[m] <value){
+                l = m+1;
+            }else {
+                if (m == n-1 ||a[m+1] !=value){
+                    return m;
+                }else {
+                    l = m+1;
+                }
+            }
+        }
+
+        return -1;
+
+    }
+
 }

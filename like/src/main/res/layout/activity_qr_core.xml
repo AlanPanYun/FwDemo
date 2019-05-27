@@ -10,7 +10,7 @@
         android:id="@+id/tv_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="view"
+        android:text="点击"
         android:padding="10dp"/>
 
     <android.support.v4.view.ViewPager
@@ -18,12 +18,14 @@
         android:layout_width="match_parent"
         android:layout_margin="60dp"
         android:clipChildren="false"
+        android:visibility="gone"
         android:layout_height="140dp"/>
 
 
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="120dp" />
 
 </LinearLayout>

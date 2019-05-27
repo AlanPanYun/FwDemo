@@ -1,6 +1,9 @@
 package com.example.fwdemo;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -17,13 +20,14 @@ import com.example.fwdemo.contract.MainContract;
 import com.example.fwdemo.presenter.MainPresenter;
 import com.face.library.banner.CoverModeTransformer;
 import com.face.library.banner.view.BannerView;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity implements MainContract.View{
+public class MainActivity extends BaseActivity implements MainContract.View {
 
 
     private TextView tv;
@@ -38,7 +42,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
         mainPresenter.attachView(this);
     }
 
-    private void getViewSpec(){
+    private void getViewSpec() {
         ViewTreeObserver v = tv.getViewTreeObserver();
         v.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
@@ -51,15 +55,16 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 
     @Override
     public void configView() {
-
+        final RxPermissions rxPermissions = new RxPermissions(this);
         initBanner();
         tv = (TextView) findViewById(R.id.tv_test);
         TextView tvStart = (TextView) findViewById(R.id.tv_start);
         tvStart.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("CheckResult")
             @Override
             public void onClick(View view) {
-                mainPresenter.getBookDetail(new GetVersionRequest("5.9.0","android"));
-                Log.i("book","start");
+                mainPresenter.getBookDetail(new GetVersionRequest("5.9.0", "android"));
+                Log.i("book", "start");
 
 //                ARouterUtils.navation(ARouterConstant.like_test);
                 mainPresenter.load();
@@ -69,17 +74,41 @@ public class MainActivity extends BaseActivity implements MainContract.View{
 //                EditPopu editPopu = new EditPopu(MainActivity.this);
 //                editPopu.showAtLocation(tv, Gravity.BOTTOM,0,0);
 
-                int[] ints = mainPresenter.proArry();
-                int[] ints2 = mainPresenter.proArry();
+//                Toast.makeText(MainActivity.this, getModel(), Toast.LENGTH_SHORT).show();
+//                int[] ints = mainPresenter.proArry();
+//                int[] ints2 = mainPresenter.proArry();
+//
+//
+//                mainPresenter.sortByCha(ints);
+//                mainPresenter.sortByMao(ints2);
+
+                int[] a =  new int[]{1,2,2,2,3,4,4,4,4,5};
+                int bsearch = mainPresenter.bsearch(a, 10, 3);
+                Log.i("bsearch",bsearch+"");
 
 
-                mainPresenter.sortByCha(ints);
-                mainPresenter.sortByMao(ints2);
             }
         });
 
 
-     }
+    }
+
+    private void showCamera() {
+        // 跳转到系统照相机
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivity(cameraIntent);
+
+    }
+
+    public static String getModel() {
+        String model = Build.MODEL;
+        if (model != null) {
+            model = model.trim().replaceAll("\\s*", "");
+        } else {
+            model = "";
+        }
+        return model;
+    }
 
     @Override
     public int getLayoutId() {
@@ -100,7 +129,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
         Intent intent = new Intent(this, PicActivity.class);
 //        startActivity(intent);
 
-        mainPresenter.getBookDetail(new GetVersionRequest("5.9.0","android"));
+        mainPresenter.getBookDetail(new GetVersionRequest("5.9.0", "android"));
     }
 
 
@@ -133,7 +162,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mainPresenter !=null){
+        if (mainPresenter != null) {
             mainPresenter.detachView();
         }
     }
@@ -141,7 +170,7 @@ public class MainActivity extends BaseActivity implements MainContract.View{
     public List<TitleImageBannerEntry> getData() {
         data = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            TitleImageBannerEntry entry = new TitleImageBannerEntry("11","",R.drawable.img_banner01,"");
+            TitleImageBannerEntry entry = new TitleImageBannerEntry("11", "", R.drawable.img_banner01, "");
             data.add(entry);
         }
         return data;

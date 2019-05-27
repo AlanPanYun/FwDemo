@@ -1,9 +1,11 @@
 package com.face.like;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -32,6 +34,10 @@ public class TestActivity extends AppCompatActivity implements ViewPager.OnPageC
     private int count = 0;
     private BannerViewAdapter viewAdapter;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,12 +48,22 @@ public class TestActivity extends AppCompatActivity implements ViewPager.OnPageC
 
     private void initView() {
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
 
         findViewById(R.id.tv_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ARouterUtils.navation(ARouterConstant.AVATAR_ACTIVITY);
-
 
             }
         });
@@ -180,5 +196,23 @@ public class TestActivity extends AppCompatActivity implements ViewPager.OnPageC
             realPosition += count;
         return realPosition;
     }
+
+
+    public int bsearch(int[] a, int n, int value) {
+        int low = 0;
+        int high = n - 1;
+        while (low <= high) {
+            int mid = low + ((high - low) >> 1);
+            if (a[mid] >= value) {
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+
+        if (low < n && a[low]==value) return low;
+        else return -1;
+    }
+
 
 }
