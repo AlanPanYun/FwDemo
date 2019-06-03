@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_margin="60dp"
         android:clipChildren="false"
-        android:visibility="gone"
         android:layout_height="140dp"/>
 
 

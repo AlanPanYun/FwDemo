@@ -3,6 +3,8 @@ package com.face.view;
 import android.app.Application;
 import android.content.Context;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 
 /**
  * @author Alan

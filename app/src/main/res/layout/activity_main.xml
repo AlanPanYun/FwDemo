@@ -39,7 +39,6 @@
         app:decelerateMultiple="6"
         app:singlePageMode="canNotPaging|noIndicator"
         app:loopMode="infiniteLoop"
-        android:visibility="gone"
         app:pagingIntervalTime="4000" />
 
 

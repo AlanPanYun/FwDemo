@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.fwdemo.activity.BaseActivity;
 import com.example.fwdemo.activity.PicActivity;
 import com.example.fwdemo.bean.GetVersionResponse;
@@ -82,11 +83,12 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 //                mainPresenter.sortByCha(ints);
 //                mainPresenter.sortByMao(ints2);
 
-                int[] a =  new int[]{1,2,2,2,3,4,4,4,4,5};
-                int bsearch = mainPresenter.bsearch(a, 10, 3);
-                Log.i("bsearch",bsearch+"");
+                int[] a =  new int[]{2,4,8,1,3,6,9,0,7,5};
+                  mainPresenter.quickSortInternally(a, 0, 9);
 
 
+                Glide.with(MainActivity.this)
+                        .load("www.baid.com");
             }
         });
 
