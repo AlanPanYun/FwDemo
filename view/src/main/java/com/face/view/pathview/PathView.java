@@ -292,7 +292,7 @@ public class PathView extends View {
                                 mAlpha = (int) animation.getAnimatedValue();
                             }
                         });
-//                        mAlphaAnimator.start();
+                        mAlphaAnimator.start();
                     }
                 }
                 if (lightLineStartProgress > 1) {

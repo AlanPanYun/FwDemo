@@ -1,7 +1,7 @@
 package com.example.fwdemo.component;
 
 import com.example.fwdemo.MainActivity;
-import com.example.fwdemo.module.MainModule;
+import com.example.fwdemo.activity.AlgorithmActivity;
 
 import dagger.Component;
 
@@ -13,4 +13,6 @@ import dagger.Component;
 public interface MainComponent {
 
     MainActivity inject(MainActivity mainActivity);
+
+    AlgorithmActivity inject(AlgorithmActivity algorithmActivity);
 }

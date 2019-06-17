@@ -9,9 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
 import com.example.fwdemo.R;
+import com.face.library.ARouterConstant;
 import com.face.library.utils.QRCore;
 
+@Route(path = ARouterConstant.APP_QRCOREACTIVITY)
 public class QRCoreActivity extends AppCompatActivity {
 
     @Override

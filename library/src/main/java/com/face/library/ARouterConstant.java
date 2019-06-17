@@ -10,4 +10,8 @@ public class ARouterConstant {
 
 
     public static final String AVATAR_ACTIVITY = "/like/avatarActivity";
+
+    public static final String APP_ALGORITHMACTIVITY = "/app/AlgorithmActivity";
+
+    public static final String APP_QRCOREACTIVITY = "/app/QRCoreActivity";
 }

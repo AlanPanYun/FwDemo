@@ -13,7 +13,7 @@ import com.example.fwdemo.component.AppComponent;
  * Created by Administrator on 2018/4/4.
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int layoutId;
 
@@ -49,6 +49,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
+    protected void addOnClikcLisenter(View...views){
+        if (views !=null && views.length >0){
+            for (View view :
+                    views) {
+                if (view !=null){
+                    view.setOnClickListener(this);
+                }
+            }
+        }
+    }
 
     protected void  isiable(View... views){
         if (views !=null && views.length >0){
@@ -62,4 +72,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }

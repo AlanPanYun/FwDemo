@@ -1,15 +1,14 @@
 package com.example.fwdemo;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Build;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.example.fwdemo.activity.BaseActivity;
 import com.example.fwdemo.activity.PicActivity;
 import com.example.fwdemo.bean.GetVersionResponse;
@@ -19,14 +18,21 @@ import com.example.fwdemo.component.AppComponent;
 import com.example.fwdemo.component.DaggerMainComponent;
 import com.example.fwdemo.contract.MainContract;
 import com.example.fwdemo.presenter.MainPresenter;
+import com.face.library.ARouterConstant;
+import com.face.library.ARouterUtils;
 import com.face.library.banner.CoverModeTransformer;
 import com.face.library.banner.view.BannerView;
+import com.face.library.utils.BarUtils;
+import com.face.library.utils.LogUtils;
+import com.orhanobut.logger.Logger;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends BaseActivity implements MainContract.View {
 
@@ -54,9 +60,20 @@ public class MainActivity extends BaseActivity implements MainContract.View {
 
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void configView() {
+
+        BarUtils.setNavBarVisibility(MainActivity.this,false);
         final RxPermissions rxPermissions = new RxPermissions(this);
+
+        rxPermissions.request(Manifest.permission.ACCESS_COARSE_LOCATION)
+                .subscribe(new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) throws Exception {
+                        Logger.i("log",aBoolean);
+                    }
+                });
         initBanner();
         tv = (TextView) findViewById(R.id.tv_test);
         TextView tvStart = (TextView) findViewById(R.id.tv_start);
@@ -65,30 +82,11 @@ public class MainActivity extends BaseActivity implements MainContract.View {
             @Override
             public void onClick(View view) {
                 mainPresenter.getBookDetail(new GetVersionRequest("5.9.0", "android"));
-                Log.i("book", "start");
+                LogUtils.i("book", "start");
 
-//                ARouterUtils.navation(ARouterConstant.like_test);
-                mainPresenter.load();
-
-//                ARouterUtils.navation(ARouterConstant.like_test);
-
-//                EditPopu editPopu = new EditPopu(MainActivity.this);
-//                editPopu.showAtLocation(tv, Gravity.BOTTOM,0,0);
-
-//                Toast.makeText(MainActivity.this, getModel(), Toast.LENGTH_SHORT).show();
-//                int[] ints = mainPresenter.proArry();
-//                int[] ints2 = mainPresenter.proArry();
-//
-//
-//                mainPresenter.sortByCha(ints);
-//                mainPresenter.sortByMao(ints2);
-
-                int[] a =  new int[]{2,4,8,1,3,6,9,0,7,5};
-                  mainPresenter.quickSortInternally(a, 0, 9);
+                ARouterUtils.navation(ARouterConstant.APP_QRCOREACTIVITY);
 
 
-                Glide.with(MainActivity.this)
-                        .load("www.baid.com");
             }
         });
 

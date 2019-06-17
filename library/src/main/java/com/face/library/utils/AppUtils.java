@@ -15,7 +15,7 @@
  */
 package com.face.library.utils;
 
-import android.content.Context;
+import android.app.Application;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -24,17 +24,17 @@ import android.util.DisplayMetrics;
 
 public class AppUtils {
 
-    private static Context mContext;
+    private static Application mContext;
     private static Thread mUiThread;
 
     private static Handler sHandler = new Handler(Looper.getMainLooper());
 
-    public static void init(Context context) {
+    public static void init(Application context) {
         mContext = context;
         mUiThread = Thread.currentThread();
     }
 
-    public static Context getAppContext() {
+    public static Application getAppContext() {
         return mContext;
     }
 

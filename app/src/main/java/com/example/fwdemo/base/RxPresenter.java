@@ -10,7 +10,7 @@ import io.reactivex.disposables.Disposable;
  * Created by Administrator on 2018/4/8.
  */
 
-public class RxPresenter<T extends BaseContract.BaseView>
+public class RxPresenter<T extends BaseContract.BaseNoImpView>
         implements BaseContract.BasePresenter<T> {
 
     protected T mView;

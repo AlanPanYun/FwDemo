@@ -49,6 +49,7 @@
         <activity android:name=".activity.QRCoreActivity"/>
 
         <activity android:name=".activity.PicActivity"/>
+        <activity android:name=".activity.AlgorithmActivity"/>
     </application>
 
 </manifest>

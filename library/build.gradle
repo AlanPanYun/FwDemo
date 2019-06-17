@@ -33,7 +33,7 @@ android {
         }
 
         //仿真
-        release {
+        plbeat {
             buildConfigField "boolean", "IS_DEBUG", "false"
             buildConfigField "String", "buildTime", "\"" + releaseTime() + "\""
             //混淆
@@ -90,6 +90,7 @@ dependencies {
     api rootProject.ext.dependencies["glide"]
     api rootProject.ext.dependencies["recyclerview"]
     api rootProject.ext.dependencies["rxpermissions"]
+    api rootProject.ext.dependencies["logger"]
     //    api rootProject.ext.dependencies["Banner"]
     annotationProcessor rootProject.ext.dependencies["glide:compiler"]
     testImplementation 'junit:junit:4.12'

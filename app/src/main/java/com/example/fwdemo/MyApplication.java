@@ -32,6 +32,7 @@ public class MyApplication extends Application {
         AppUtils.init(this);
         ARouterUtils();
 
+        Logger.addLogAdapter(new AndroidLogAdapter());
         baseComponent = DaggerAppComponent
                 .builder()
                 .apiModule(new ApiModule())

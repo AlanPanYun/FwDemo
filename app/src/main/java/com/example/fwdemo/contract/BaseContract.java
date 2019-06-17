@@ -14,11 +14,15 @@ public interface BaseContract {
         void detachView();
     }
 
-    interface BaseView {
+    interface BaseView extends BaseNoImpView {
 
         void showError();
 
         void complete();
+
+    }
+
+    interface BaseNoImpView{
 
     }
 }

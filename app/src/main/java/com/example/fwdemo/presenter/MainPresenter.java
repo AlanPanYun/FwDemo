@@ -115,14 +115,16 @@ public class MainPresenter extends RxPresenter<MainContract.View>
                 BaseDataBean baseDataBean = new BaseDataBean();
                 baseDataBean.setError("ffff");
                 emitter.onNext(baseDataBean);
+
             }
         })
+
                 .subscribeOn(Schedulers.io())
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<BaseDataBean>() {
                     @Override
                     public void accept(BaseDataBean s) throws Exception {
-                        Log.i("book", s.getError());
+                        Log.i("doonext", s.getError());
                     }
                 });
 
@@ -253,16 +255,16 @@ public class MainPresenter extends RxPresenter<MainContract.View>
         int l = 0;
         int h = n - 1;
         while (l <= h) {
-            int m = l +(h-l)/2;
-            if (a[m] > value){
-                h = m-1;
-            }else if (a[m] <value){
-                l = m+1;
-            }else {
-                if (m == n-1 ||a[m+1] !=value){
+            int m = l + (h - l) / 2;
+            if (a[m] > value) {
+                h = m - 1;
+            } else if (a[m] < value) {
+                l = m + 1;
+            } else {
+                if (m == n - 1 || a[m + 1] != value) {
                     return m;
-                }else {
-                    l = m+1;
+                } else {
+                    l = m + 1;
                 }
             }
         }
@@ -276,25 +278,25 @@ public class MainPresenter extends RxPresenter<MainContract.View>
         if (p >= r) return;
 
         int q = partition(a, p, r); // 获取分区点
-        quickSortInternally(a, p, q-1);
-        quickSortInternally(a, q+1, r);
-        Log.i("quicka",GsonUtil.getJsonStringFromObject(a));
+        quickSortInternally(a, p, q - 1);
+        quickSortInternally(a, q + 1, r);
+        Log.i("quicka", GsonUtil.getJsonStringFromObject(a));
     }
 
     private static int partition(int[] a, int p, int r) {
         int pivot = a[r];
         int i = p;
-        for(int j = p; j < r; j++) {
+        for (int j = p; j < r; j++) {
             if (a[j] < pivot) {
                 if (i == j) {
                     i++;
-                    Log.i("quick","i == j   "+i);
+                    Log.i("quick", "i == j   " + i);
                 } else {
                     int tmp = a[i];
                     a[i++] = a[j];
                     a[j] = tmp;
 
-                    Log.i("quick","i --"+i+" j --  "+i);
+                    Log.i("quick", "i --" + i + " j --  " + i);
                 }
             }
         }
@@ -305,6 +307,39 @@ public class MainPresenter extends RxPresenter<MainContract.View>
 
         System.out.println("i=" + i);
         return i;
+    }
+
+    public int[] twoSum(int[] nums, int target) {
+
+
+        int size = nums.length;
+
+        for (int i = 0; i < size; i++) {
+            int temp = nums[i];
+            int j = i - 1;
+            for (; j >= 0; j--) {
+                if (nums[j] > temp) {
+                    nums[j + 1] = nums[j];
+                } else {
+                    break;
+                }
+            }
+            nums[j + 1] = temp;
+
+        }
+
+
+        for (int i = 0; i < size - 1; i++) {
+            int sum = nums[i] + nums[i + 1];
+            if (sum == target) {
+                int[] st = new int[]{i, i + 1};
+                return st;
+            } else if (sum > target) {
+                return null;
+            }
+
+        }
+        return null;
     }
 
 }
