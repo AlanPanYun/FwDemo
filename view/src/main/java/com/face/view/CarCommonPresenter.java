@@ -14,17 +14,16 @@ public class CarCommonPresenter
         mView = view;
     }
 
-    //请求接口a参数
-    private void getCarInfo(String parameter) {
-        ......
-        Object o;// 接口获取的数据
-        mView.onResult(o);
+    @Override
+    public void getCarInfo(String parameter) {
+
     }
 
-    //请求接口b参数
-    private void getCarDistanc(String parameter) {
-        ......
-        Object o;// 接口获取的数据
-        mView.onResult(o);
+    @Override
+    public void getCarDistanc(String parameter) {
+
     }
+
+    //请求接口a参数
+
 }

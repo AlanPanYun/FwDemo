@@ -41,16 +41,15 @@ public class MainActivity extends AppCompatActivity {
         SeekBar.OnSeekBarChangeListener listener = new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                switch (seekBar.getId()) {
-                    case R.id.duration:
-                        mDuration = i;
-                        break;
-                    case R.id.line_width:
-                        mLineWidth = i;
-                        mCanvasView.setLineWidth(i);
-                        break;
-                    default:
-                        break;
+                int i1 = seekBar.getId();
+                if (i1 == R.id.duration) {
+                    mDuration = i;
+
+                } else if (i1 == R.id.line_width) {
+                    mLineWidth = i;
+                    mCanvasView.setLineWidth(i);
+
+                } else {
                 }
                 mToast.setText(String.valueOf(i));
                 mToast.show();
