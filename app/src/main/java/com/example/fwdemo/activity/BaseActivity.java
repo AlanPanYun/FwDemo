@@ -71,6 +71,9 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
         }
     }
 
+    public static void getDat(){
+
+    }
 
     @Override
     public void onClick(View v) {

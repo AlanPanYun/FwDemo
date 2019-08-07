@@ -12,6 +12,7 @@ import com.example.fwdemo.contract.MainContract;
 import com.face.library.utils.GsonUtil;
 
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Inject;
 
@@ -93,6 +94,18 @@ public class MainPresenter extends RxPresenter<MainContract.View>
 
     @SuppressLint("CheckResult")
     public void load() {
+
+         Observable.interval(1, TimeUnit.MILLISECONDS)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnNext(new Consumer<Long>() {
+                    @Override
+                    public void accept(Long aLong) throws Exception{
+
+                    }
+
+                });
+
         Disposable observable = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
@@ -341,5 +354,6 @@ public class MainPresenter extends RxPresenter<MainContract.View>
         }
         return null;
     }
+
 
 }

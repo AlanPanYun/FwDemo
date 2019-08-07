@@ -18,6 +18,7 @@ import com.example.fwdemo.component.AppComponent;
 import com.example.fwdemo.component.DaggerMainComponent;
 import com.example.fwdemo.contract.MainContract;
 import com.example.fwdemo.presenter.MainPresenter;
+import com.example.fwdemo.utils.GlideUtil;
 import com.face.library.ARouterConstant;
 import com.face.library.ARouterUtils;
 import com.face.library.banner.CoverModeTransformer;
@@ -47,6 +48,10 @@ public class MainActivity extends BaseActivity implements MainContract.View {
     @Override
     public void initData() {
         mainPresenter.attachView(this);
+
+        GlideUtil glideUtil = new GlideUtil();
+        glideUtil.addMap();
+        glideUtil.remove();
     }
 
     private void getViewSpec() {
@@ -84,9 +89,7 @@ public class MainActivity extends BaseActivity implements MainContract.View {
                 mainPresenter.getBookDetail(new GetVersionRequest("5.9.0", "android"));
                 LogUtils.i("book", "start");
 
-                ARouterUtils.navation(ARouterConstant.APP_QRCOREACTIVITY);
-
-
+                ARouterUtils.navation(ARouterConstant.APP_ALGORITHMACTIVITY);
             }
         });
 

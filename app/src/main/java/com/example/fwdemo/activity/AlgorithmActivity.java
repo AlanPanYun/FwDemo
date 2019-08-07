@@ -28,6 +28,8 @@ public class AlgorithmActivity extends BaseActivity implements AlgorithmContract
     @Override
     public void initData() {
         mPresenter.attachView(this);
+
+        mPresenter.letgthOfLongString("abcdbrjiklop");
     }
 
     @Override
@@ -58,5 +60,8 @@ public class AlgorithmActivity extends BaseActivity implements AlgorithmContract
             break;
         }
 
+        getDat();
     }
+
+
 }

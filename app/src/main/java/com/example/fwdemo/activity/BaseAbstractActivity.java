@@ -13,4 +13,8 @@ public abstract class BaseAbstractActivity extends AppCompatActivity{
     }
 
     protected abstract void text2();
+
+    private void initSet(){
+
+    }
 }
