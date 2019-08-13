@@ -28,8 +28,8 @@ public class AlgorithmActivity extends BaseActivity implements AlgorithmContract
     @Override
     public void initData() {
         mPresenter.attachView(this);
-
-        mPresenter.letgthOfLongString("abcdbrjiklop");
+         //"PAHNAPLSIIGYIR" PAHNALIGYPISRIx
+        mPresenter.reverse(30009);
     }
 
     @Override

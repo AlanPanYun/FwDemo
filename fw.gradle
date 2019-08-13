@@ -49,7 +49,8 @@ ext {
             "glide:compiler"   : 'com.github.bumptech.glide:compiler:4.9.0',
             "recyclerview"     : 'com.android.support:recyclerview-v7:28.0.0',
             "rxpermissions"    : 'com.github.tbruyelle:rxpermissions:0.10.2',
-            "logger"    : 'com.orhanobut:logger:2.2.0'
+            "logger"    : 'com.orhanobut:logger:2.2.0',
+            "websocket"    : 'org.java-websocket:Java-WebSocket:1.4.0'
 
     ]
 

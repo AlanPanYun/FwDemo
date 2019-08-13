@@ -35,7 +35,7 @@ import javax.inject.Inject;
 
 import io.reactivex.functions.Consumer;
 
-public class MainActivity extends BaseActivity implements MainContract.View {
+public class MainActivity extends BaseActivity<MainPresenter,MainContract.View>  implements MainContract.View {
 
 
     private TextView tv;

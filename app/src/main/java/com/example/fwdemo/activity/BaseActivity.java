@@ -7,14 +7,17 @@ import android.view.View;
 
 import com.example.fwdemo.MyApplication;
 import com.example.fwdemo.component.AppComponent;
+import com.example.fwdemo.contract.BaseContract;
 
 
 /**
- * Created by Administrator on 2018/4/4.
+ * Created by alanpan on 2018/4/4.
  */
 
-public abstract class BaseActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class BaseActivity<T extends BaseContract.BasePresenter,V extends BaseContract.BaseNoImpView> extends AppCompatActivity implements View.OnClickListener {
 
+    private T presenter;
+    private V view;
     private int layoutId;
 
     @Override
@@ -23,6 +26,8 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
         setContentView(getLayoutId());
         setupActivityComponent(MyApplication.getInstance().getBaseComponent());
+
+        presenter.attachView(view);
 
         configView();
         initData();
@@ -37,6 +42,11 @@ public abstract class BaseActivity extends AppCompatActivity implements View.OnC
 
     public abstract void setupActivityComponent(AppComponent upActivityComponent);
 
+    @Override
+    protected void onDestroy() {
+        presenter.detachView();
+        super.onDestroy();
+    }
 
     protected void gone(View... views){
         if (views !=null && views.length >0){

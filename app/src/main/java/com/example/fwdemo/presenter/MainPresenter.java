@@ -43,16 +43,6 @@ public class MainPresenter extends RxPresenter<MainContract.View>
     }
 
     @Override
-    public void attachView(MainContract.View view) {
-
-    }
-
-    @Override
-    public void detachView() {
-
-    }
-
-    @Override
     public void getBookDetail(GetVersionRequest request) {
         Disposable disposable = apiRequest
                 .getVersion(request)
@@ -101,7 +91,7 @@ public class MainPresenter extends RxPresenter<MainContract.View>
                 .doOnNext(new Consumer<Long>() {
                     @Override
                     public void accept(Long aLong) throws Exception{
-
+                        mView.showBookDetail(null);
                     }
 
                 });

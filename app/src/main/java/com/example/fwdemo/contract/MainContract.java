@@ -11,7 +11,7 @@ public interface MainContract{
 
     interface View extends BaseContract.BaseView{
 
-        void showBookDetail(GetVersionResponse data);
+        void showBookDetail( GetVersionResponse data);
     }
 
 

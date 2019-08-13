@@ -91,6 +91,7 @@ dependencies {
     api rootProject.ext.dependencies["recyclerview"]
     api rootProject.ext.dependencies["rxpermissions"]
     api rootProject.ext.dependencies["logger"]
+    api rootProject.ext.dependencies["websocket"]
     //    api rootProject.ext.dependencies["Banner"]
     annotationProcessor rootProject.ext.dependencies["glide:compiler"]
     testImplementation 'junit:junit:4.12'
