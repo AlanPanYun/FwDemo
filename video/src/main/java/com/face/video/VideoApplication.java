@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.face.library.utils.AppUtils;
 
 /**
  * @author Alan
@@ -14,6 +15,7 @@ public class VideoApplication extends Application {
     public void onCreate() {
         super.onCreate();
         ARouterUtils();
+        AppUtils.init(this);
     }
 
     private void ARouterUtils() {

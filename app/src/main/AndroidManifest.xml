@@ -50,6 +50,7 @@
 
         <activity android:name=".activity.PicActivity"/>
         <activity android:name=".activity.AlgorithmActivity"/>
+        <activity android:name=".HookActivity" />
     </application>
 
 </manifest>

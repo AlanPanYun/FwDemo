@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FwDemo</string>
+    <string name="string_empty">FwDemo</string>
 </resources>

@@ -21,15 +21,19 @@ android {
     buildTypes {
         //正式
         release {
-            buildConfigField "boolean", "IS_DEBUG", "false"
-            buildConfigField "String", "buildTime", "\"" + releaseTime() + "\""
-            //混淆
+           //混淆
             minifyEnabled true
             //Zipalign优化
             zipAlignEnabled true
             // 移除无用的resource文件
             shrinkResources false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+
+            buildConfigField "boolean", "IS_DEBUG", "false"
+            buildConfigField "String", "buildTime", "\"" + releaseTime() + "\""
+            buildConfigField "String", "BASE_URL", ""
+
         }
 
         //仿真
@@ -94,7 +98,10 @@ dependencies {
     api rootProject.ext.dependencies["websocket"]
     //    api rootProject.ext.dependencies["Banner"]
     annotationProcessor rootProject.ext.dependencies["glide:compiler"]
+    annotationProcessor rootProject.ext.dependencies["arouter-compiler"]
     testImplementation 'junit:junit:4.12'
+
+//    api 'jp.wasabeef:recyclerview-animators:3.0.0'
     //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
     //    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }

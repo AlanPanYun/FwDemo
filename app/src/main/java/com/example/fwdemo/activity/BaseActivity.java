@@ -27,8 +27,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter,V extend
         setContentView(getLayoutId());
         setupActivityComponent(MyApplication.getInstance().getBaseComponent());
 
-        presenter.attachView(view);
-
+//        presenter.attachView(view);
         configView();
         initData();
 
@@ -44,7 +43,7 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter,V extend
 
     @Override
     protected void onDestroy() {
-        presenter.detachView();
+//        presenter.detachView();
         super.onDestroy();
     }
 
@@ -89,4 +88,6 @@ public abstract class BaseActivity<T extends BaseContract.BasePresenter,V extend
     public void onClick(View v) {
 
     }
+
+
 }

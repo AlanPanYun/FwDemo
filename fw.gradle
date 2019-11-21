@@ -1,9 +1,9 @@
 ext {
 
 
-    isLikeApplication = true
-    isViewApplicaiton = true
-    isVideoApplication = true
+    isLikeApplication = false
+    isViewApplicaiton = false
+    isVideoApplication = false
 
     android = [
             compileSdkVersion: 28,

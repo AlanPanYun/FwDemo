@@ -21,27 +21,28 @@ public class PcmToWavUtil {
 
     private int mChannel;
 
-    public PcmToWavUtil(int mSampleRate, int mChannel,int encoding) {
+    public PcmToWavUtil(int mSampleRate, int mChannel, int encoding) {
         this.mSampleRate = mSampleRate;
         this.mChannel = mChannel;
 
-        this.mBufferSize = AudioRecord.getMinBufferSize(mSampleRate,mChannel,encoding);
+        this.mBufferSize = AudioRecord.getMinBufferSize(mSampleRate, mChannel, encoding);
     }
 
     /**
      * pcm 文件转wav文件
-     * @param inFileName 源文件路径
+     *
+     * @param inFileName  源文件路径
      * @param outFileName 目标文件路径
      */
-    public void pcmToWav(String inFileName,String outFileName){
+    public void pcmToWav(String inFileName, String outFileName) {
         FileInputStream in;
         FileOutputStream out;
         long totalAudioLen;
         long totalDataLen;
         long longSampleRate = mSampleRate;
 
-        int channels  = mChannel == AudioFormat.CHANNEL_IN_MONO?1:2;
-        long byteRate = 16 * mSampleRate * channels/8;
+        int channels = mChannel == AudioFormat.CHANNEL_IN_MONO ? 1 : 2;
+        long byteRate = 16 * mSampleRate * channels / 8;
         byte[] data = new byte[mBufferSize];
 
         try {
@@ -51,9 +52,9 @@ public class PcmToWavUtil {
             totalAudioLen = in.getChannel().size();
             totalDataLen = totalAudioLen + 36;
 
-            writeWaveFIleHeader(out,totalAudioLen,totalDataLen,longSampleRate,channels,byteRate);
+            writeWaveFileHeader(out, totalAudioLen, totalDataLen, longSampleRate, channels, byteRate);
 
-            while (in.read(data) !=-1){
+            while (in.read(data) != -1) {
                 out.write(data);
             }
 
@@ -70,16 +71,11 @@ public class PcmToWavUtil {
 
     /**
      * 加入wav文件头
-     * @param out
-     * @param totalAudioLen
-     * @param totalDataLen
-     * @param longSampleRate
-     * @param channels
-     * @param byteRate
      */
-    private void writeWaveFIleHeader(FileOutputStream out, long totalAudioLen, long totalDataLen,
-                                     long longSampleRate, int channels, long byteRate) {
-
+    private void writeWaveFileHeader(FileOutputStream out, long totalAudioLen,
+                                     long totalDataLen, long longSampleRate,
+                                     int channels, long byteRate)
+            throws IOException {
         byte[] header = new byte[44];
         // RIFF/WAVE header
         header[0] = 'R';
@@ -133,11 +129,6 @@ public class PcmToWavUtil {
         header[41] = (byte) ((totalAudioLen >> 8) & 0xff);
         header[42] = (byte) ((totalAudioLen >> 16) & 0xff);
         header[43] = (byte) ((totalAudioLen >> 24) & 0xff);
-        try {
-            out.write(header, 0, 44);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        out.write(header, 0, 44);
     }
 }

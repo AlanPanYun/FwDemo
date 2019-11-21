@@ -3,6 +3,7 @@ package com.face.view;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Scroller;
 
 /**
  * @author Alan
@@ -16,5 +17,14 @@ public class PathActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_path);
+
+        Scroller scroller = new Scroller(this);
+
+
+    }
+
+    private void smoothScrollTo(int destX,int destY){
+
+//        int scollx = getSco
     }
 }

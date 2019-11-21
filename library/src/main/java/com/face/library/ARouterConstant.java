@@ -14,4 +14,6 @@ public class ARouterConstant {
     public static final String APP_ALGORITHMACTIVITY = "/app/AlgorithmActivity";
 
     public static final String APP_QRCOREACTIVITY = "/app/QRCoreActivity";
+
+    public static final String APP_HOOK = "/app/hook";
 }

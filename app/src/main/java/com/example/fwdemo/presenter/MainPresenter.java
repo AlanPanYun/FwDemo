@@ -11,6 +11,7 @@ import com.example.fwdemo.bean.request.GetVersionRequest;
 import com.example.fwdemo.contract.MainContract;
 import com.face.library.utils.GsonUtil;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -85,12 +86,12 @@ public class MainPresenter extends RxPresenter<MainContract.View>
     @SuppressLint("CheckResult")
     public void load() {
 
-         Observable.interval(1, TimeUnit.MILLISECONDS)
+        Observable.interval(1, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnNext(new Consumer<Long>() {
                     @Override
-                    public void accept(Long aLong) throws Exception{
+                    public void accept(Long aLong) throws Exception {
                         mView.showBookDetail(null);
                     }
 
@@ -345,5 +346,29 @@ public class MainPresenter extends RxPresenter<MainContract.View>
         return null;
     }
 
+    //leetcode
+    public boolean wordBreak(String s, List<String> wordDict) {
+        int size = s.length();
+        for (int i = 1; i <=size; i++) {
+            if (wordDict.contains(s)){
+                return true;
+            }
+            String one = s.substring(0, i);
+            Log.i("wordBreak","one = "+one);
+            if (wordDict.contains(one)) {
+                String substring = s.substring(i, size);
+                Log.i("wordBreak","contain = "+substring);
+                if (substring == null||"".equals(substring)) {
+                    return true;
+                }
+               if (wordBreak(substring, wordDict)){
+                   return true;
+                }
+               break;
+            }
+        }
+        Log.i("wordBreak","false = ");
+        return false;
+    }
 
 }
